@@ -195,10 +195,6 @@ http://127.0.0.1:8000
 
 **Python & Django Developer**
 
-📧 Email
-
-barbareatharva367@gmail.com
-
 💼 LinkedIn
 
 https://www.linkedin.com/in/atharva-barbare/
