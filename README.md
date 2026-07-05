@@ -9,10 +9,15 @@
 <img src="https://img.shields.io/badge/Django-6.0-success?style=for-the-badge&logo=django&logoColor=white">
 <img src="https://img.shields.io/badge/OpenWeather-API-orange?style=for-the-badge">
 <img src="https://img.shields.io/badge/Responsive-Yes-green?style=for-the-badge">
+<img src="https://img.shields.io/badge/Render-Deployed-purple?style=for-the-badge">
 <img src="https://img.shields.io/badge/License-MIT-red?style=for-the-badge">
 </p>
 
-A clean, responsive and modern weather application with **real-time weather updates**, **GPS location detection**, and **dynamic weather backgrounds**.
+A modern, responsive weather application built with **Python**, **Django**, and **OpenWeather API** featuring real-time weather updates, GPS location detection, dynamic weather backgrounds, and secure deployment on Render.
+
+### 🌐 Live Demo
+
+**🚀 https://weathersphere-szjt.onrender.com/**
 
 </div>
 
@@ -21,58 +26,77 @@ A clean, responsive and modern weather application with **real-time weather upda
 # ✨ Features
 
 - 🌍 Search weather by city
-- 📍 Detect current location using Geolocation API
+- 📍 Detect current location using HTML5 Geolocation
 - 🌡 Real-time temperature
 - 🤗 Feels Like temperature
 - 💧 Humidity
 - 🌬 Wind Speed
 - 🌤 Weather Description
 - 🌅 Sunrise & Sunset
-- 🌈 Dynamic weather backgrounds
-- 📱 Fully Responsive UI
-- 🔒 Secure API Keys using `.env`
-- ⚠ Proper error handling
+- 🎨 Dynamic weather backgrounds
+- 📱 Fully Responsive Design
+- 🔒 Secure API Keys using Environment Variables
+- ⚠ Proper Error Handling
+- ☁ Deployed on Render
 
 ---
 
 # 🛠 Tech Stack
 
-### Backend
+## Backend
 
 - Python
 - Django
 
-### Frontend
+## Frontend
 
 - HTML5
 - CSS3
 - JavaScript
 - Font Awesome
 
-### APIs
+## APIs
 
 - OpenWeather API
 - HTML5 Geolocation API
+
+## Deployment
+
+- Render
+- Gunicorn
+- WhiteNoise
+
+---
+
+# 🌐 Live Project
+
+## 🚀 Live Website
+
+https://weathersphere-szjt.onrender.com/
+
+## 💻 GitHub Repository
+
+https://github.com/atharvabarbare-ctrl/WeatherSphere
 
 ---
 
 # 📸 Screenshots
 
-> Add your screenshots inside a folder named **screenshots**
+> Add screenshots inside the **screenshots** folder.
 
-### Home Page
+## Home Page
 
 ```
 screenshots/home.png
 ```
 
-### Weather Search
+## Weather Search
 
 ```
 screenshots/search.png
 ```
 
-### Current Location
+## Current Location
 
 ```
 screenshots/location.png
@@ -99,6 +123,8 @@ WeatherSphere/
 ├── requirements.txt
 ├── .gitignore
 ├── README.md
+├── LICENSE
+├── .env.example
 └── .env
 ```
 
@@ -106,13 +132,13 @@ WeatherSphere/
 
 # 🚀 Installation
 
-Clone the repository
+Clone Repository
 
 ```bash
 git clone https://github.com/atharvabarbare-ctrl/WeatherSphere.git
 ```
 
-Move into project
+Go to Project
 
 ```bash
 cd WeatherSphere
@@ -124,7 +150,7 @@ Create Virtual Environment
 python -m venv venv
 ```
 
-Activate Virtual Environment
+Activate Environment
 
 ### Windows
 
@@ -138,7 +164,7 @@ venv\Scripts\activate
 source venv/bin/activate
 ```
 
-Install dependencies
+Install Dependencies
 
 ```bash
 pip install -r requirements.txt
@@ -150,37 +176,41 @@ Create `.env`
 SECRET_KEY=your_secret_key
 
 OPENWEATHER_API_KEY=your_openweather_api_key
+
+DEBUG=True
 ```
 
-Run the server
+Run Server
 
 ```bash
 python manage.py runserver
 ```
 
-Open your browser
+Open Browser
 
 ```
-http://127.0.0.1:8000
+http://127.0.0.1:8000/
 ```
 
 ---
 
 # 🔒 Security
 
-- Environment Variables
+- Environment Variables (.env)
 - Secret Key Protection
 - API Key Protection
 - CSRF Protection
 - Django Security Middleware
+- Production Ready Configuration
 
 ---
 
 # 📈 Future Improvements
 
-- 🌦 5-Day Forecast
+- 🌦 5-Day Weather Forecast
 - ⏰ Hourly Forecast
 - 🌫 Air Quality Index
+- 🌡 UV Index
 - ❤️ Favorite Cities
 - 🌙 Dark Mode
 - 📊 Weather Charts
@@ -193,7 +223,7 @@ http://127.0.0.1:8000
 
 ## Atharva Barbare
 
-**Python & Django Developer**
+**Python | Django | Full Stack Developer**
 
 💼 LinkedIn
 
@@ -203,24 +233,32 @@ https://www.linkedin.com/in/atharva-barbare/
 
 https://github.com/atharvabarbare-ctrl
 
+🌐 Live Demo
+
+https://weathersphere-szjt.onrender.com/
+
 ---
 
 # 🤝 Contributing
 
 Contributions are welcome.
 
-Feel free to fork the repository and submit a pull request.
+Feel free to fork this repository and submit a Pull Request.
 
 ---
 
 # ⭐ Support
 
-If you found this project helpful, please consider giving it a ⭐ on GitHub.
+If you like this project, consider giving it a ⭐ on GitHub.
 
 ---
 
 <div align="center">
 
-Made with ❤️ using Django
+### 🌤 WeatherSphere
+
+Built with ❤️ using Django
+
+⭐ If you found this project useful, don't forget to Star the Repository ⭐
 
 </div>
