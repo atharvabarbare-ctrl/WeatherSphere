@@ -1,0 +1,214 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>WeatherSphere</title>
+
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+
+</head>
+
+<body style="background-image:url('{{ background }}');">
+
+    <div class="overlay"></div>
+
+    <div class="container">
+
+        <!-- TITLE -->
+        <h1>🌤 WeatherSphere</h1>
+
+        <!-- SEARCH -->
+        <form method="POST">
+            {% csrf_token %}
+
+            <div class="search-box">
+
+                <input type="text" name="city" placeholder="Search city..." autocomplete="off" required>
+
+                <button type="submit">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                </button>
+
+            </div>
+
+        </form>
+
+        <!-- ERROR -->
+        {% if error %}
+        <div class="error">
+            {{ error }}
+        </div>
+        {% endif %}
+
+        <!-- WEATHER TOP -->
+        <div class="weather-top">
+
+            <div class="temperature">
+
+                <h2>{{ temp }}°</h2>
+
+                <h3>{{ city }}</h3>
+
+                <p class="description">{{ description }}</p>
+
+                <span>{{ day }}</span>
+
+            </div>
+
+            <div class="weather-icon">
+
+                <img src="https://openweathermap.org/img/wn/{{ icon }}@4x.png" alt="weather">
+
+            </div>
+
+        </div>
+
+        <!-- DETAILS -->
+        <div class="details">
+
+            <div class="card">
+                <i class="fa-solid fa-temperature-half"></i>
+                <h4>Feels Like</h4>
+                <p>{{ feels_like }}°C</p>
+            </div>
+
+            <div class="card">
+                <i class="fa-solid fa-droplet"></i>
+                <h4>Humidity</h4>
+                <p>{{ humidity }}%</p>
+            </div>
+
+            <div class="card">
+                <i class="fa-solid fa-wind"></i>
+                <h4>Wind</h4>
+                <p>{{ wind }} m/s</p>
+            </div>
+
+            <div class="card">
+                <i class="fa-solid fa-gauge-high"></i>
+                <h4>Pressure</h4>
+                <p>{{ pressure }} hPa</p>
+            </div>
+
+            <div class="card">
+                <i class="fa-solid fa-sun"></i>
+                <h4>Sunrise</h4>
+                <p>{{ sunrise }}</p>
+            </div>
+
+            <div class="card">
+                <i class="fa-solid fa-moon"></i>
+                <h4>Sunset</h4>
+                <p>{{ sunset }}</p>
+            </div>
+
+        </div>
+        <!-- 5 DAY FORECAST -->
+
+        {% if forecast %}
+
+        <div class="forecast-section">
+
+            <h2>5-Day Forecast</h2>
+
+            <div class="forecast">
+
+                {% for item in forecast %}
+
+                <div class="forecast-card">
+
+                    <p>{{ item.date }}</p>
+
+                    <img src="https://openweathermap.org/img/wn/{{ item.icon }}@2x.png" alt="Forecast">
+
+                    <h3>{{ item.temp }}°C</h3>
+
+                    <span>{{ item.desc }}</span>
+
+                </div>
+
+                {% endfor %}
+
+            </div>
+
+        </div>
+
+        {% endif %}
+        <!-- LOCATION BUTTON -->
+        <button type="button" class="location-btn" onclick="getLocation()">
+
+            <i class="fa-solid fa-location-dot"></i>
+            Use My Location
+
+        </button>
+
+        <!-- FOOTER -->
+        <div class="footer">
+            Powered by OpenWeather API
+        </div>
+
+    </div>
+
+    <!-- HIDDEN FORM -->
+    <form id="locationForm" method="POST" style="display:none;">
+        {% csrf_token %}
+        <input type="hidden" id="latitude" name="latitude">
+        <input type="hidden" id="longitude" name="longitude">
+    </form>
+
+    <script>
+        function getLocation() {
+
+            const btn = document.querySelector(".location-btn");
+
+            btn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> Detecting...';
+            btn.disabled = true;
+
+            if (navigator.geolocation) {
+
+                navigator.geolocation.getCurrentPosition(
+
+                    function (position) {
+
+                        document.getElementById("latitude").value = position.coords.latitude;
+                        document.getElementById("longitude").value = position.coords.longitude;
+
+                        document.getElementById("locationForm").submit();
+
+                    },
+
+                    function () {
+
+                        btn.innerHTML = '<i class="fa-solid fa-location-dot"></i> Use My Location';
+                        btn.disabled = false;
+
+                        alert("Location access denied!");
+
+                    }
+
+                );
+
+            } else {
+
+                alert("Geolocation not supported.");
+                btn.disabled = false;
+
+            }
+        }
+    </script>
+
+</body>
+
+</html>
